@@ -310,32 +310,12 @@ class Assembler:
         
         self.exploration_strategy(new_inspiration)
 
-
-    def find_distance_from_mean(self, outfit: Outfit):
-        feature_row = self.get_feature_matrix([outfit.get_outfit()])
-        cluster_centroid = self.get_feature_matrix(self.cluster_centroids[outfit.get_cluster_index()])
-
-        distance = self.find_euclidean_distance(feature_row[1:], cluster_centroid[1:])
-        return distance
     
     def softmax_probabilities(self, values):
         e_values = np.exp(values)
         probabilities = e_values / np.sum(e_values)
         return probabilities
     
-    def get_a_top_outfit(self):
-        unique_outfits = {}
-        for inspiration in self.greatest_inspirations:
-            for outfit in inspiration.get_outfits():
-                unique_outfits[outfit.get_index()] = (outfit.get_outfit(), outfit.get_cluster_index())
-        
-        outfit_keys = list(unique_outfits.keys())
-
-        cumulative_rewards = [self.get_cumulative_reward(outfit_index) for outfit_index in outfit_keys]
-
-        outfit_index = np.random.choice(outfit_keys, p=self.softmax_probabilities(cumulative_rewards))
-
-        return unique_outfits[outfit_index]
     
     def decrease_epsilon(self):
         if self.epsilon > self.min_epsilon:
@@ -413,55 +393,7 @@ class Assembler:
                 random_top_inspiration = random.choice(list(self.greatest_inspirations))
                 new_inspiration = random_top_inspiration.new_repeat(self.timestep)
                 return self.make_match(new_inspiration)
-        
-        
-    
-    def filter_by_item(self, clothing_items, outfit_path):
-        similarity_percentages = []
-        
-        for item in clothing_items:
-            item_path = item['Path']
-            similarity = FeatureExtractor.find_similar_item(item_path, outfit_path)
-            similarity_percentages.append((item, similarity))
-        
-        items, percentages = zip(*similarity_percentages)
-
-        threshold = np.percentile(percentages, 80)
-
-        filtered_items = [item for (item, percentage) in similarity_percentages if percentage >= threshold]
-
-        return filtered_items
-
-
-    def filter_by_colours(self, items, outfit_colours):
-
-        outfit_colours = np.array(outfit_colours)
-
-        similarity_scores = []
-
-        for item in items:
-            item_colours = [item['Prominent_Colour1'], item['Prominent_Colour2'], item['Prominent_Colour3']]
-            valid_item_colours = [np.array(colour) for colour in item_colours if isinstance(colour, tuple)]
-            closest_similarity = 500
-
-            for item_colour in valid_item_colours:
                 
-                for outfit_colour in outfit_colours:
-                    similarity = np.linalg.norm(np.array(item_colour) - np.array(outfit_colour))
-
-                    if similarity < closest_similarity:
-                        closest_similarity = similarity
-            
-            similarity_scores.append((item, closest_similarity))
-
-        clothing_items, scores = zip(*similarity_scores)
-
-        threshold = np.percentile(scores, 20)
-
-        filtered_items = [item for (item, score) in similarity_scores if score <= threshold]
-
-        return filtered_items
-    
     
     def get_cumulative_reward(self, outfit_index):
         rewards = np.array([inspiration.get_outfit_reward(outfit_index) for inspiration in self.all_inspirations if inspiration.contains_outfit(outfit_index)])
@@ -476,51 +408,3 @@ class Assembler:
         cumulative_reward = np.sum(discounted_rewards)
 
         return cumulative_reward
-    
-
-    def assembly(self, produced_items):
-        print(f'produced: {len(produced_items)}')
-        combo_utility_inspiration = []
-
-        items = []
-        for value in list(produced_items.values()):
-            items += value
-
-        for template in Assembler.VALID_COMBINATIONS:
-            length = len(template)
-            for combo in combinations(items, length):
-                labels = [item['Label'] for item in combo]
-                if sorted(labels) == sorted(template):
-                    """
-                    Utility of item is the cumulative reward of the outfit it is from based on how close it is in similarity
-                    to the item maybe but definitely cumulative
-
-                    Then append to the combos with the overall utility
-                    """
-                    combo_utility = 0
-                    inspirations = []
-                    for item in combo:
-                        for outfit_index, items_list in list(produced_items.items()):
-                            if item in items_list:
-                                combo_utility += self.get_cumulative_reward(outfit_index)
-                                inspirations.append(outfit_index)
-                                break
-                    combo_utility_inspiration.append((combo, combo_utility, inspirations))
-        
-
-        if len(combo_utility_inspiration) < 2:
-            if len(combo_utility_inspiration) == 0:
-                return self.make_match()
-            else:
-                return (combo_utility_inspiration[0][0], combo_utility_inspiration[0][2])
-            
-
-        combos, utilities, outfit_inspirations = zip(*combo_utility_inspiration)
-        
-        utility_probabilities = self.softmax_probabilities(utilities)
-        chosen_index = np.random.choice(len(combo_utility_inspiration), p=utility_probabilities)
-        outfit = combos[chosen_index-1]
-        outfit_inspiration = outfit_inspirations[chosen_index-1]
-
-
-        return (outfit, outfit_inspiration)
