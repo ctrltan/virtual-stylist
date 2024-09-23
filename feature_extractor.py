@@ -256,18 +256,6 @@ class FeatureExtractor:
         matches = bf.match(descriptors1, descriptors2)
 
         similarity = (len(matches) / len(keypoints1)) * 100
-        #print(similarity)
-
-        """ img_matches = cv2.drawMatches(gray_clothing_item, keypoints1, gray_region, keypoints2, matches, None, flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
-        plt.imshow(img_matches)
-        plt.show() """
-
-        """
-        grayscale both
-        check key points for clothing item and outfit
-        check matches over keypoints in item for similarity measure
-        top similar items are chosen
-        """
 
         return similarity
 
