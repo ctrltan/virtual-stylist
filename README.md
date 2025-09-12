@@ -1,9 +1,12 @@
 # Virtual Stylist (King's College London - BSc Computer Science)
 
-Gif video using the stylist - use video recorded for submission video and chop up
-
 ### Tech Stack
-stickers for python, opencv, pillow, Pandas and mathplotlib
+* Python
+* OpenCV
+* Pandas
+* NumPy
+* Pillow
+* Matplotlib
 
 ## Overview
 For my final-year project, I was lucky to have the opportunity to build whatever system I wanted. From the start of my degree, I knew that I wanted to build something that incorporated my love for fashion, growing interest in Machine Learning and, challenged my system design skills. Considering this was a relatively unexplored intersection between fashion and tech, I decided to create a virtual stylist. 
@@ -28,5 +31,7 @@ For my final-year project, I was lucky to have the opportunity to build whatever
 ### Hu Moments
 
 ### K-Means Clustering
+
+## Further Improvements
 
 
