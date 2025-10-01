@@ -26,9 +26,6 @@ For my final-year project, I was lucky to have the opportunity to build whatever
 
 * [`Outfit Assembler`](./outfit_assembler.py) 
 
-## ML Concepts
-
-### Hu Moments
 
 ### K-Means Clustering
 
