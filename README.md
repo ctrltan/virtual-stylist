@@ -1,12 +1,10 @@
 # Virtual Stylist (King's College London - BSc Computer Science)
 
-### Tech Stack
-* Python
-* OpenCV
-* Pandas
-* NumPy
-* Pillow
-* Matplotlib
+![Python](https://img.shields.io/badge/python-3670A0?style=flat-square&logo=python&logoColor=ffdd54)
+![OpenCV](https://img.shields.io/badge/OpenCV-27338e?style=flat-square&logo=OpenCV&logoColor=white)
+![Pandas](https://img.shields.io/badge/-Pandas-333333?style=flat-square&logo=pandas)
+![NumPy](https://img.shields.io/badge/-Numpy-013243?style=flat-square&logo=NumPy)
+![Matplotlib](https://img.shields.io/badge/-Matplotlib-000000?style=flat-square&logo=python)
 
 ## Overview
 For my final-year project, I was lucky to have the opportunity to build whatever system I wanted. From the start of my degree, I knew that I wanted to build something that incorporated my love for fashion, growing interest in Machine Learning and, challenged my system design skills. Considering this was a relatively unexplored intersection between fashion and tech, I decided to create a virtual stylist. 
