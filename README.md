@@ -7,7 +7,7 @@
 ![Matplotlib](https://img.shields.io/badge/-Matplotlib-000000?style=flat-square&logo=python)
 
 ## Overview
-For my final-year project, I was lucky to have the opportunity to build whatever system I wanted. From the start of my degree, I knew that I wanted to build something that incorporated my love for fashion, growing interest in Machine Learning and, challenged my system design skills. Considering this was a relatively unexplored intersection between fashion and tech, I decided to create a virtual stylist. 
+For my final-year project, I was lucky to have the opportunity to build whatever system I wanted. From the start of my degree, I knew that I wanted to build something that incorporated my love for fashion, growing interest in Machine Learning and, challenged my system design skills. Considering this was a relatively unexplored intersection between fashion and tech, I decided to take an OOP approach to creating a virtual stylist. 
 
 ## Approach
 * Runway images from [Vogue Runway](https://www.vogue.com/fashion-shows/latest-shows) and individual clothing item images from [Farfetch](https://www.farfetch.com/uk/?utm_source=google&utm_medium=cpc&utm_keywordid=58953085&isbrand=yes&pid=google_search&af_channel=Search&c=61800696&af_c_id=61800696&af_siteid=&af_keywords=aud-2324821770157:kwd-533010193&af_adset_id=2867078016&af_ad_id=591291745084&af_sub1=58953085&is_retargeting=true&gad_source=1&gad_campaignid=61800696&gbraid=0AAAAADsmKHQu-7XlqoqfcqeorAvRwBcLx&gclid=CjwKCAjwiY_GBhBEEiwAFaghvl0njCIrWVKcBl8tMVhjmhHJlcvwaK65xrR8l1JsgnSsyMJYGi2kbhoCwU4QAvD_BwE) as **training data**
