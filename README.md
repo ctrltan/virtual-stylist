@@ -6,6 +6,8 @@
 ![NumPy](https://img.shields.io/badge/-Numpy-013243?style=flat-square&logo=NumPy)
 ![Matplotlib](https://img.shields.io/badge/-Matplotlib-000000?style=flat-square&logo=python)
 
+
+
 ## Overview
 For my final-year project, I was lucky to have the opportunity to build whatever system I wanted. From the start of my degree, I knew that I wanted to build something that incorporated my love for fashion, growing interest in Machine Learning and, challenged my system design skills. Considering this was a relatively unexplored intersection between fashion and tech, I decided to take an OOP approach to creating a virtual stylist. 
 
@@ -24,9 +26,15 @@ For my final-year project, I was lucky to have the opportunity to build whatever
 
 * [`Outfit Assembler`](./outfit_assembler.py) 
 
-
-### K-Means Clustering
-
 ## Further Improvements
 
+**Storing Images**
+
+Currently, the images are stored locally and calls are made to strip the metadata from the images. This metadata is necessary for data normalisation (image size) and feature extraction (images are organised by clothing item type, season and collection year). The features, including image path, are then stored, read and modified in a CSV using Pandas. The images should be accessible via a storage solution that can handle multiple requests for the same data at any time. 
+
+Storing the images in an S3 bucket would allow the folder structure of the images to be maintained whilst also providing durable, fast access storage. The CSV for image features can also be stored in an S3 bucket instead of locally.
+
+- Can support a large number of global users, allowing for more simplified use
+- Provides a hardware agnostic solution (not using MacOS specific metadata extraction)
+- Supports to future scalability
 
