@@ -6,7 +6,8 @@
 ![NumPy](https://img.shields.io/badge/-Numpy-013243?style=flat-square&logo=NumPy)
 ![Matplotlib](https://img.shields.io/badge/-Matplotlib-000000?style=flat-square&logo=python)
 
-<video src="https://raw.githubusercontent.com/ctrltan/virtual-stylist/main/assets/virtual-stylist.demo.mp4" width="600" autoplay loop muted playsinline></video>
+<img width="1399" height="874" alt="stylist_image" src="https://github.com/user-attachments/assets/6d262a77-3ca4-4a87-8faf-fdb8004eeec8" />
+
 
 ## Overview
 For my final-year project, I was lucky to have the opportunity to build whatever system I wanted. From the start of my degree, I knew that I wanted to build something that incorporated my love for fashion, growing interest in Machine Learning and, challenged my system design skills. Considering this was a relatively unexplored intersection between fashion and tech, I decided to take an OOP approach to creating a virtual stylist. 
