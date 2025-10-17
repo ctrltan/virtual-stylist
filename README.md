@@ -1,4 +1,4 @@
-# Virtual Stylist (King's College London - BSc Computer Science)
+# Virtual Stylist
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=flat-square&logo=python&logoColor=ffdd54)
 ![OpenCV](https://img.shields.io/badge/OpenCV-27338e?style=flat-square&logo=OpenCV&logoColor=white)
